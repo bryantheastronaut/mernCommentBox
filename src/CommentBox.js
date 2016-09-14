@@ -39,11 +39,9 @@ class CommentBox extends Component {
         console.error(err);
       });
   }
-  handleCommentUpdate(id) {
-    axios.put(`${this.props.url}/${id}`)
-      .then(res => {
-        console.log(res);
-      })
+  handleCommentUpdate(id, comment) {
+    //sends the comment id and new author/text to our api
+    axios.put(`${this.props.url}/${id}`, comment)
       .catch(err => {
         console.log(err);
       })

@@ -70,9 +70,10 @@ router.route('/comments/:comment_id')
     Comment.findById(req.params.comment_id, function(err, comment) {
       if (err)
         res.send(err);
-      //setting the new author and text to whatever was changed.
-      comment.author = req.body.author;
-      comment.text = req.body.text;
+      //setting the new author and text to whatever was changed. If nothing was changed
+      // we will not alter the field.
+      (req.body.author) ? comment.author = req.body.author : null;
+      (req.body.text) ? comment.text = req.body.text : null;
       //save comment
       comment.save(function(err) {
         if (err)
