@@ -54,6 +54,17 @@ const style = {
     textTransform:'uppercase',
     letterSpacing:'.055rem',
     border:'none'
+  },
+  updateLink: {
+    textDecoration:'none',
+    paddingRight:'15px',
+    fontSize:'.7rem'
+  },
+  deleteLink: {
+    textDecoration:'none',
+    paddingRight:'15px',
+    fontSize:'.7rem',
+    color:'red'
   }
 }
 
