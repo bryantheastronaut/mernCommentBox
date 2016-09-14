@@ -3,12 +3,21 @@ import style from './style';
 import marked from 'marked';
 
 class Comment extends Component {
-  updatePost(e) {
+  constructor(props) {
+    super(props);
+    this.deleteComment = this.deleteComment.bind(this);
+    this.updateComment = this.updateComment.bind(this);
+  }
+  updateComment(e) {
     e.preventDefault();
+    let id = this.props.uniqueID;
+    //this.props.onCommentUpdate(id);
     console.log('clicked');
   }
-  deletePost(e) {
+  deleteComment(e) {
     e.preventDefault();
+    let id = this.props.uniqueID;
+    this.props.onCommentDelete(id);
     console.log('oops deleted');
   }
   rawMarkup() {
@@ -20,8 +29,8 @@ class Comment extends Component {
       <div style={ style.comment }>
         <h3>{this.props.author}</h3>
         <span dangerouslySetInnerHTML={ this.rawMarkup() } />
-        <a style={ style.updateLink} href='#' onClick={ this.updatePost }>update</a>
-        <a style={ style.deleteLink} href='#' onClick={ this.deletePost }>delete</a>
+        <a style={ style.updateLink} href='#' onClick={ this.updateComment }>update</a>
+        <a style={ style.deleteLink} href='#' onClick={ this.deleteComment }>delete</a>
       </div>
     )
   }
