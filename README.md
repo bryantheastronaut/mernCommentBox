@@ -386,7 +386,7 @@ app.listen(port, function() {
 });
 ```
 
-And now have our basic API up and running! If you run `npm start` and direct your browser to [http://localhost:3001/api](http://localhost:3001/api), we can see our message!
+And now have our basic API up and running! If you run `node server.js` and direct your browser to [http://localhost:3001/api](http://localhost:3001/api), we can see our message!
 ![img2.png](./images/img2.png)
 
 This is all well and good to make sure the API is up and running, but once we want to start making post requests, this will get a bit convoluted. I recommend using something to run and test your API. I use Postman [which you can find here](http://www.getpostman.com).
