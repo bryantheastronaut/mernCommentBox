@@ -28,7 +28,7 @@ The GitHub repo for this tutorial is available [here](https://github.com/bryanth
 
 The first thing we will do is create a skeleton React application to work with. This will save us from needing to configure a webpack file, incorporate babel for JSX use, and other React setup headaches.
 
-`create-react-app mernCommentBox && cd mernCommentBox` will create the base for us and bring us to our working directory.
+`create-react-app merncommentbox && cd merncommentbox` will create the base for us and bring us to our working directory.
 
 if we run `npm start`, we get this pretty little app here: ![img1](./images/img1.png)
 
