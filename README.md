@@ -450,7 +450,6 @@ You will need to restart server any time we make changes to the _server.js_ file
 Lets create a _Procfile_ in our root directory, which Foreman will use to determine which commands to run.
 
 ```javascript
-//Procfile
 web: react-scripts start
 api: nodemon server.js
 ```
@@ -667,7 +666,7 @@ handleCommentSubmit(comment) {
   axios.post(this.props.url, comment)
     .then(res => {
       this.setState({ data: res });
-    }).
+    })
     .catch(err => {
       console.error(err);
     });
@@ -695,7 +694,7 @@ handleCommentSubmit(comment) {
 Now as soon as you add a comment, it is immediately added to the list!
 ![Bender saying Neat again](./images/neat2.gif)
 
-Now we move past the tutorial into parts unknown! How you holding up? I know this is long. Your a champ though! Ready?
+Now we move past the tutorial into parts unknown! How you holding up? I know this is long. You're a champ though! Ready?
 
 #### Putting the UD in CRUD!
 
