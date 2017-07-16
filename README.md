@@ -398,7 +398,7 @@ Okay, awesome!
 
 #### Integrating the Database
 
-For this part, I will be using MLab [which you can find here](https://mlab.com). It is a database-as-a-service provider for MongoDB. Make a free account, then log in. Click on the Users tab, and click add database user. Once you have a username and password, we can integrate it into our _server.js_ file.
+For this part, I will be using MLab [which you can find here](https://mlab.com). It is a database-as-a-service provider for MongoDB. Make a free account, then log in. Create a new database and click on the Users tab, then click add database user. Once you have a username and password, we can integrate it into our _server.js_ file.
 
 On your MLab page, you should see something at the top that looks like this:
 ![img4](./images/img4.png)
