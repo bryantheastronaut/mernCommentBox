@@ -412,10 +412,13 @@ We will use the connect "using a driver via the standard MongoDB URI" option. Co
 var port = process.env.API_PORT || 3001;
 
 //db config
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds019836.mlab.com:19836/bryandb');
+var mongoDB = 'mongodb://<DBUSERNAME>:<DBPASSWORD>@ds019836.mlab.com:19836/bryandb';
+mongoose.connect(mongoDB, { useMongoClient: true })
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 ```
 
-Mine looks like this. Yours will be different. Replace the `<dbuser>` and `<dbpassword>` with the database username and password you just created.
+Mine looks like this. Yours will be different. Replace the `<dbuser>` and `<dbpassword>` and the database information with the database username and password and details you just created.
 
 Next we will need to create the Schema that will show what our database entries look like.
 
