@@ -5,7 +5,7 @@ import marked from 'marked';
 class Comment extends Component {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       toBeUpdated: false,
       author: '',
       text: ''
@@ -67,11 +67,11 @@ class Comment extends Component {
                 placeholder='Update name...'
                 style={ style.commentFormAuthor }
                 value={ this.state.author }
-                onChange= { this.handleAuthorChange } />
+                onChange={ this.handleAuthorChange } />
               <input
                 type='text'
                 placeholder='Update your comment...'
-                style= { style.commentFormText }
+                style={ style.commentFormText }
                 value={ this.state.text }
                 onChange={ this.handleTextChange } />
               <input
