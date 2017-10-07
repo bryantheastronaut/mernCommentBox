@@ -50,6 +50,14 @@ class CommentBox extends Component {
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   }
+  //when incorporating into another project
+  //(with react-router for instance),
+  //this will prevent error messages every 2 seconds
+  //once the CommentBox is unmounted
+  componentWillUnmount() {
+  this.setInterval && clearInterval(this.setInterval);
+  this.setInterval = false;
+}
   render() {
     return (
       <div style={ style.commentBox }>
