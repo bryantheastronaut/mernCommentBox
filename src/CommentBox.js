@@ -12,6 +12,7 @@ class CommentBox extends Component {
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentDelete = this.handleCommentDelete.bind(this);
     this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
+    this.pollInterval = null;
   }
   loadCommentsFromServer() {
     axios.get(this.props.url)
@@ -48,15 +49,17 @@ class CommentBox extends Component {
   }
   componentDidMount() {
     this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    if (!this.pollInterval) {
+      this.pollInterval = setInterval(this.loadCommentsFromServer, this.props.pollInterval)
+    } 
   }
   //when incorporating into another project
   //(with react-router for instance),
   //this will prevent error messages every 2 seconds
   //once the CommentBox is unmounted
   componentWillUnmount() {
-  this.setInterval && clearInterval(this.setInterval);
-  this.setInterval = false;
+  this.pollInterval && clearInterval(this.pollInterval);
+  this.pollInterval = null;
 }
   render() {
     return (
