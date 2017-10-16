@@ -668,7 +668,7 @@ And now in our CommentBox component, we can finally add our axios post method to
 handleCommentSubmit(comment) {
   axios.post(this.props.url, comment)
     .then(res => {
-      this.setState({ data: res });
+      this.loadCommentsFromServer();
     })
     .catch(err => {
       console.error(err);
