@@ -668,7 +668,7 @@ And now in our CommentBox component, we can finally add our axios post method to
 handleCommentSubmit(comment) {
   axios.post(this.props.url, comment)
     .then(res => {
-      this.setState({ data: res });
+      this.loadCommentsFromServer();
     })
     .catch(err => {
       console.error(err);
@@ -683,7 +683,7 @@ We can finish up the Facebook tutorial now with a bit of optimization to our Com
 //...
 handleCommentSubmit(comment) {
   let comments = this.state.data;
-  comment.id = Date.now();
+  comment._id = Date.now();
   let newComments = comments.concat([comment]);
   this.setState({ data: newComments });
   axios.post(this.props.url, comment)
