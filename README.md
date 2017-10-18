@@ -7,7 +7,7 @@ In this tutorial, I will attempt to show you how to create a basic MERN (MongoDB
 
 #### What this guide expects:
   - Basic understanding of React (the above tutorial is a great place to start)
-  - ES6 Javascipt -- I will try to make note when using something from it, but this guide is not a tutorial on either React or ES6.
+  - ES6 Javascript -- I will try to make note when using something from it, but this guide is not a tutorial on either React or ES6.
   - Node/NPM installed
 
 #### What this guide provides:
@@ -32,13 +32,13 @@ The first thing we will do is create a skeleton React application to work with. 
 
 if we run `npm start`, we get this pretty little app here: ![img1](./images/img1.png)
 
-Lets do a bit of cleanup of unnecessary files to start.
+Let's do a bit of cleanup of unnecessary files to start.
 
 `cd src && rm App.css App.js App.test.js favicon.ico index.css logo.svg` to get rid of everything in the src file besides the _index.js_ file.
 
 Now head into the _index.html_ in your root folder and remove the `<link rel="shortcut icon" href="./src/favicon.ico">` line in the head, since that file no longer exists. While we are here, we can change the title to something a bit more proper than the generic 'React App' -- I will call mine "Bryan's Fancy Full Stack App".
 
-Now we can head in to the _index.js_ file to get rid of the files we removed. Based on Facebook's Tutorial, we can make a change to the ReactDOM call as well and put in what we will be making next, which is the __CommentBox__. Your _index.js_ file should look like this:
+Now we can head into the _index.js_ file to get rid of the files we removed. Based on Facebook's Tutorial, we can make a change to the ReactDOM call as well and put in what we will be making next, which is the __CommentBox__. Your _index.js_ file should look like this:
 
 ```javascript
 //index.js
@@ -52,7 +52,7 @@ ReactDOM.render(
 );
 ```
 
-We're so close to rendering our first thing! lets `touch src/CommentBox.js src/Comment.js src/CommentForm.js src/CommentList.js` to create all the components we will be working with. Lets also `touch data.js` to make sure everything is working before we dive in. We should also make a folder to hold the Schema for our database, so we should make a folder called __model__ with a _comments.js_ file inside.
+We're so close to rendering our first thing! Let's `touch src/CommentBox.js src/Comment.js src/CommentForm.js src/CommentList.js` to create all the components we will be working with. Let's also `touch data.js` to make sure everything is working before we dive in. We should also make a folder to hold the Schema for our database, so we should make a folder called __model__ with a _comments.js_ file inside.
 
 Our file structure will look like this:
 
@@ -94,7 +94,7 @@ with
 ```javascript
 className='uniqueName'
 ```
-Go ahead and copy this file in to _style.js_, and feel free to make any changes you see fit. Its not the prettiest, but its better than nothing.
+Go ahead and copy this file into _style.js_, and feel free to make any changes you see fit. It's not the prettiest, but its better than nothing.
 
 ```javascript
 //style.js
@@ -171,7 +171,7 @@ const style = {
 module.exports = style;
 ```
 
-While we are here, lets install some other dependencies we will need coming up. `npm i axios express body-parser foreman nodemon marked mongoose --save` which will give us:
+While we are here, let's install some other dependencies we will need coming up. `npm i axios express body-parser foreman nodemon marked mongoose --save` which will give us:
 
 - Axios: let us use HTTP methods to communicate with our database.
 
@@ -334,7 +334,7 @@ const data = [
 module.exports = data;
 ```
 
-Okay now lets get to it for real!
+Okay now let's get to it for real!
 
 #### Setting up server.js
 
@@ -450,14 +450,14 @@ var Comment = require('./model/comments');
 ```
 You will need to restart server any time we make changes to the _server.js_ file. Fortunately for us, we installed nodemon earlier which will restart the server any time we make changes to the file. While we are at it, we will set up Foreman to run both the _server.js_ file and the React app at the same time (which we were previously using `npm run start` for).
 
-Lets create a _Procfile_ in our root directory, which Foreman will use to determine which commands to run.
+Let's create a _Procfile_ in our root directory, which Foreman will use to determine which commands to run.
 
 ```javascript
 web: react-scripts start
 api: nodemon server.js
 ```
 
-And now head in to the _package.json_ file to add a start-dev script:
+And now head into the _package.json_ file to add a start-dev script:
 
 ```javascript
 //package.json
@@ -513,7 +513,7 @@ router.route('/comments')
 Note that after you save, nodemon will automatically restart your server, so changes should be instantaneous. Now if we use Postman to check out our route we just created, /api/comments we see.... Nothing!
 ![img5](./images/img5.png)
 
-This is because our database is empty! Lets test out our brand new POST method we created and add our first comment! If we send a POST request to the same route /api/comments and put our author and text in, we should see our success message.
+This is because our database is empty! Let's test out our brand new POST method we created and add our first comment! If we send a POST request to the same route /api/comments and put our author and text in, we should see our success message.
 ![img6](./images/img6.png)
 Now when you make another GET request, we see our comment!
 ![img7](./images/img7.png)
@@ -565,7 +565,7 @@ export default CommentBox;
 
 #### Using HTTP request with our friend Axios!
 
-In our _CommentBox.js_ component, we will now add our AJAX call. We will use axios instead of jquery like the do in the original tutorial because I'm a bit biased against jQuery, especially when you only need it for its AJAX method. Plus the axios call just looks so much... sleeker. Make sure to add axios to your dependencies at the top.
+In our _CommentBox.js_ component, we will now add our AJAX call. We will use axios instead of jquery like they do in the original tutorial because I'm a bit biased against jQuery, especially when you only need it for its AJAX method. Plus the axios call just looks so much... sleeker. Make sure to add axios to your dependencies at the top.
 
 ```javascript
 //CommentBox.js
@@ -642,7 +642,7 @@ If we go back to Postman and add another comment, we will see it automatically l
 
 #### Adding new posts
 
-Lets change our _CommentForm.js_ component now. This is the same as the original Tutorial, except we're using some ES6 sweetness.
+Let's change our _CommentForm.js_ component now. This is the same as the original Tutorial, except we're using some ES6 sweetness.
 
 ```javascript
 //CommentForm.js
@@ -701,7 +701,7 @@ Now we move past the tutorial into parts unknown! How you holding up? I know thi
 
 #### Putting the UD in CRUD!
 
-Lets hop back in to our _server.js_ file one more time to add the PUT(Update) and DELETE(...Delete) routes to our API. We will need to direct them to a specific post, so we can use the `:params` route to specify which comment we are referring to.
+Let's hop back into our _server.js_ file one more time to add the PUT (Update) and DELETE (...Delete) routes to our API. We will need to direct them to a specific post, so we can use the `:params` route to specify which comment we are referring to.
 
  ```javascript
  //server.js
@@ -736,7 +736,7 @@ router.route('/comments/:comment_id')
   });
 ```
 
-Now if we go back in to Postman, we can send either a DELETE or PUT request with the "\_id" at the end of the url. Sending a DELETE request will remove it, and sending a PUT request with a different author or text will update the comment.
+Now if we go back into Postman, we can send either a DELETE or PUT request with the "\_id" at the end of the url. Sending a DELETE request will remove it, and sending a PUT request with a different author or text will update the comment.
 ![img8](./images/img8.png)
 
 We need to add a place to update and delete each comment, so we will add links for each at the bottom of _Comment.js_. In the same file, we need to access the comment's id, but cannot use the key prop. Set a uniqueID prop which is the same as the key. We will also handle the comment deletion and updates similarly to how we handled the form submit, that is to put the HTTP requests sent by axios in the _CommentBox.js_ component, and pass it down as props. Note that the constructor was called with props to bind everything together properly. All our components should look like so:
