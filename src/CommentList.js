@@ -11,7 +11,7 @@ class CommentList extends Component {
           uniqueID={ comment['_id'] }
           onCommentDelete={ this.props.onCommentDelete }
           onCommentUpdate={ this.props.onCommentUpdate }
-          key={ comment['_id'] }>
+          key={ comment.id }>
           { comment.text }
         </Comment>
       )
