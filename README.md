@@ -579,16 +579,14 @@ class CommentBox extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
-    this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
-    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
   }
-  loadCommentsFromServer() {
+  loadCommentsFromServer = () => {
     axios.get(this.props.url)
       .then(res => {
         this.setState({ data: res.data });
       })
   }
-  handleCommentSubmit(comment) {
+  handleCommentSubmit = (comment) => {
     //add POST request
 
   }
@@ -739,7 +737,7 @@ router.route('/comments/:comment_id')
 Now if we go back into Postman, we can send either a DELETE or PUT request with the "\_id" at the end of the url. Sending a DELETE request will remove it, and sending a PUT request with a different author or text will update the comment.
 ![img8](./images/img8.png)
 
-We need to add a place to update and delete each comment, so we will add links for each at the bottom of _Comment.js_. In the same file, we need to access the comment's id, but cannot use the key prop. Set a uniqueID prop which is the same as the key. We will also handle the comment deletion and updates similarly to how we handled the form submit, that is to put the HTTP requests sent by axios in the _CommentBox.js_ component, and pass it down as props. Note that the constructor was called with props to bind everything together properly. All our components should look like so:
+We need to add a place to update and delete each comment, so we will add links for each at the bottom of _Comment.js_. In the same file, we need to access the comment's id, but cannot use the key prop. Set a uniqueID prop which is the same as the key. We will also handle the comment deletion and updates similarly to how we handled the form submit, that is to put the HTTP requests sent by axios in the _CommentBox.js_ component, and pass it down as props. All our components should look like so:
 
 ```javascript
 //CommentBox.js
@@ -753,18 +751,14 @@ class CommentBox extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
-    this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
-    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
-    this.handleCommentDelete = this.handleCommentDelete.bind(this);
-    this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
   }
-  loadCommentsFromServer() {
+  loadCommentsFromServer = () => {
     axios.get(this.props.url)
       .then(res => {
         this.setState({ data: res.data });
       })
   }
-  handleCommentSubmit(comment) {
+  handleCommentSubmit = (comment) => {
     let comments = this.state.data;
     comment.id = Date.now();
     let newComments = comments.concat([comment]);
@@ -775,7 +769,7 @@ class CommentBox extends Component {
         this.setState({ data: comments });
       });
   }
-  handleCommentDelete(id) {
+  handleCommentDelete = (id) => {
     axios.delete(`${this.props.url}/${id}`)
       .then(res => {
         console.log('Comment deleted');
@@ -784,7 +778,7 @@ class CommentBox extends Component {
         console.error(err);
       });
   }
-  handleCommentUpdate(id, comment) {
+  handleCommentUpdate => (id, comment) => {
     //sends the comment id and new author/text to our api
     axios.put(`${this.props.url}/${id}`, comment)
       .catch(err => {
@@ -855,19 +849,13 @@ class Comment extends Component {
       author: '',
       text: ''
     };
-    //binding all our functions to this class
-    this.deleteComment = this.deleteComment.bind(this);
-    this.updateComment = this.updateComment.bind(this);
-    this.handleAuthorChange = this.handleAuthorChange.bind(this);
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
   }
-  updateComment(e) {
+  updateComment = (e) => {
     e.preventDefault();
     //brings up the update field when we click on the update link.
     this.setState({ toBeUpdated: !this.state.toBeUpdated });
   }
-  handleCommentUpdate(e) {
+  handleCommentUpdate = (e) => {
     e.preventDefault();
     let id = this.props.uniqueID;
     //if author or text changed, set it. if not, leave null and our PUT request
@@ -882,16 +870,16 @@ class Comment extends Component {
       text: ''
     })
   }
-  deleteComment(e) {
+  deleteComment = (e) => {
     e.preventDefault();
     let id = this.props.uniqueID;
     this.props.onCommentDelete(id);
     console.log('oops deleted');
   }
-  handleTextChange(e) {
+  handleTextChange = (e) => {
     this.setState({ text: e.target.value });
   }
-  handleAuthorChange(e) {
+  handleAuthorChange = (e) => {
     this.setState({ author: e.target.value });
   }
   rawMarkup() {
@@ -941,17 +929,14 @@ class CommentForm extends Component {
   constructor(props) {
     super(props);
     this.state = { author: '', text: '' };
-    this.handleAuthorChange = this.handleAuthorChange.bind(this);
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleAuthorChange(e) {
+  handleAuthorChange = (e) => {
     this.setState({ author: e.target.value });
   }
-  handleTextChange(e) {
+  handleTextChange = (e) => {
     this.setState({ text: e.target.value });
   }
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     let author = this.state.author.trim();
     let text = this.state.text.trim();
