@@ -52,7 +52,7 @@ ReactDOM.render(
 );
 ```
 
-We're so close to rendering our first thing! Let's `touch src/CommentBox.js src/Comment.js src/CommentForm.js src/CommentList.js` to create all the components we will be working with. Let's also `touch data.js` to make sure everything is working before we dive in. We should also make a folder to hold the Schema for our database, so we should make a folder called __model__ with a _comments.js_ file inside.
+We're so close to rendering our first thing! Let's `touch src/CommentBox.js src/Comment.js src/CommentForm.js src/CommentList.js` to create all the components we will be working with. Let's also `touch src/data.js` to make sure everything is working before we dive in. We should also make a folder to hold the Schema for our database, so we should make a folder called __model__ with a _comments.js_ file inside.
 
 Our file structure will look like this:
 
@@ -65,10 +65,10 @@ Our file structure will look like this:
       - CommentBox.js
       - CommentForm.js
       - CommentList.js
+      - data.js
       - index.js
       - style.js
     - .gitignore
-    - data.js
     - index.html
     - package.json
     - README.md
