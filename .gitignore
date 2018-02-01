@@ -12,3 +12,6 @@ build
 # misc
 .DS_Store
 npm-debug.log
+
+#secrets
+secrets.js
