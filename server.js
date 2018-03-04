@@ -16,7 +16,7 @@ var port = process.env.API_PORT || 3001;
 
 //db config -- set your URI from mLab in secrets.js
 const uri = "mongodb://localhost:27017/comments"
-mongoose.connect(uri, { useMongoClient: true })
+mongoose.connect(uri)
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
