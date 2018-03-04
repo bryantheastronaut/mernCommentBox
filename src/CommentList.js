@@ -4,9 +4,9 @@ import style from './style';
 
 class CommentList extends Component {
   render() {
-    let commentNodes = this.props.data.map(comment => {
+    let commentNodes = this.props.data.map((comment, index) => {
       return (
-        <li key={comment._id}>
+        <li key={index}>
           <Comment
             author={ comment.author }
             uniqueID={ comment['_id'] }
