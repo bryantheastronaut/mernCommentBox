@@ -14,12 +14,14 @@ class CommentBox extends Component {
     this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
     this.pollInterval = null;
   }
+
   loadCommentsFromServer() {
     axios.get(this.props.url)
       .then(res => {
         this.setState({ data: res.data });
       })
   }
+
   handleCommentSubmit(comment) {
     let comments = this.state.data;
     comment.id = Date.now();
@@ -31,6 +33,7 @@ class CommentBox extends Component {
         this.setState({ data: comments });
       });
   }
+
   handleCommentDelete(id) {
     axios.delete(`${this.props.url}/${id}`)
       .then(res => {
@@ -40,6 +43,7 @@ class CommentBox extends Component {
         console.error(err);
       });
   }
+
   handleCommentUpdate(id, comment) {
     //sends the comment id and new author/text to our api
     axios.put(`${this.props.url}/${id}`, comment)
@@ -47,20 +51,25 @@ class CommentBox extends Component {
         console.log(err);
       })
   }
+
   componentDidMount() {
     this.loadCommentsFromServer();
     if (!this.pollInterval) {
       this.pollInterval = setInterval(this.loadCommentsFromServer, this.props.pollInterval)
-    } 
+    }
   }
+
   //when incorporating into another project
   //(with react-router for instance),
   //this will prevent error messages every 2 seconds
   //once the CommentBox is unmounted
+
   componentWillUnmount() {
-  this.pollInterval && clearInterval(this.pollInterval);
-  this.pollInterval = null;
-}
+    // this.pollInterval
+    clearInterval(this.pollInterval);
+    this.pollInterval = null;
+  }
+
   render() {
     return (
       <div style={ style.commentBox }>
