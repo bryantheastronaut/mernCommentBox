@@ -4,21 +4,25 @@ import style from './style';
 
 class CommentList extends Component {
   render() {
-    let commentNodes = this.props.data.map(comment => {
+    let commentNodes = this.props.data.map((comment, index) => {
       return (
-        <Comment
-          author={ comment.author }
-          uniqueID={ comment['_id'] }
-          onCommentDelete={ this.props.onCommentDelete }
-          onCommentUpdate={ this.props.onCommentUpdate }
-          key={ comment.id }>
-          { comment.text }
-        </Comment>
+        <li key={index}>
+          <Comment
+            author={ comment.author }
+            uniqueID={ comment['_id'] }
+            onCommentDelete={ this.props.onCommentDelete }
+            onCommentUpdate={ this.props.onCommentUpdate }
+            key={ comment._id }>
+            { comment.text }
+          </Comment>
+        </li>
       )
     })
     return (
       <div style={ style.commentList }>
-        { commentNodes }
+        <ul>
+          { commentNodes }
+        </ul>
       </div>
     )
   }

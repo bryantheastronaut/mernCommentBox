@@ -3,21 +3,24 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.4.1"
+    "axios": "^0.18.0",
+    "concurrently": "^3.5.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^1.1.1"
   },
   "dependencies": {
-    "axios": "^0.14.0",
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
+    "express": "^4.16.2",
     "foreman": "^2.0.0",
-    "marked": "^0.3.6",
-    "mongoose": "^4.6.0",
-    "nodemon": "^1.10.2",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "marked": "^0.3.17",
+    "mongoose": "^5.0.8",
+    "nodemon": "^1.17.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client": "react-scripts start",
+    "server": "node server.js",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start-dev": "nf start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

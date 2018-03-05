@@ -6,7 +6,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Comment = require('./model/comments');
-var secrets = require('./secrets');
 
 //and create our instances
 var app = express();
@@ -16,8 +15,8 @@ var router = express.Router();
 var port = process.env.API_PORT || 3001;
 
 //db config -- set your URI from mLab in secrets.js
-var mongoDB = secrets.requestSecret('db_uri');
-mongoose.connect(mongoDB, { useMongoClient: true })
+const uri = "mongodb://localhost:27017/comments"
+mongoose.connect(uri)
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
